@@ -9,7 +9,7 @@
 
     body {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
       color: #202122;
       background: #f8f9fa;
@@ -22,161 +22,323 @@
     hr {
       border: none;
       border-top: 1px solid #a2a9b1;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
     }
 
-    /* Layout */
-    .site-wrapper {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* Header */
-    .site-header {
+    /* Top bar */
+    .top-bar {
+      background: #fff;
       border-bottom: 1px solid #a2a9b1;
-      padding: 1.25rem 0 1rem;
+      padding: 0.4rem 1rem;
     }
 
-    .site-header h1 {
-      font-size: 2rem;
-      font-weight: normal;
-      letter-spacing: -0.5px;
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      max-width: 320px;
     }
 
-    .site-header h1 a {
+    .search-form input {
+      font-family: inherit;
+      font-size: 0.85rem;
+      border: 1px solid #a2a9b1;
+      padding: 0.2rem 0.4rem;
+      width: 220px;
+      background: #f8f9fa;
       color: #202122;
-      text-decoration: none;
     }
 
-    .site-tagline {
-      font-size: 0.9rem;
+    .search-form button {
+      font-family: inherit;
+      font-size: 0.8rem;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      color: #202122;
+    }
+
+    .search-form button:hover { background: #eaecf0; }
+
+    /* Page layout */
+    .page-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr 200px;
+      min-height: 100vh;
+      align-items: start;
+    }
+
+    /* Left sidebar */
+    .sidebar-left {
+      border-right: 1px solid #a2a9b1;
+      padding: 1.25rem 1rem;
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    .site-identity {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #a2a9b1;
+    }
+
+    .site-identity h1 {
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .site-identity h1 a { color: #202122; }
+
+    .site-identity p {
+      font-size: 0.75rem;
       color: #54595d;
       margin-top: 0.2rem;
       font-style: italic;
     }
 
+    .sidebar-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .sidebar-section h2 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #54595d;
+      margin-bottom: 0.4rem;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li {
+      font-size: 0.85rem;
+      padding: 0.1rem 0;
+    }
+
+    .sidebar-section p {
+      font-size: 0.8rem;
+      color: #54595d;
+      font-style: italic;
+    }
+
     /* Main content */
-    .site-content {
-      padding: 1.5rem 0;
+    .main-content {
+      padding: 1.25rem 1.5rem;
+      background: #fff;
+      border-right: 1px solid #a2a9b1;
     }
 
-    .welcome-section h2 {
-      font-size: 1.4rem;
-      font-weight: normal;
-      border-bottom: 1px solid #a2a9b1;
-      padding-bottom: 0.3rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .welcome-section p {
-      margin-bottom: 0.75rem;
-      max-width: 680px;
-    }
-
-    /* Sitemap */
-    .sitemap-section {
-      margin-top: 2rem;
-    }
-
-    .sitemap-section h2 {
-      font-size: 1.4rem;
+    .page-title {
+      font-size: 1.8rem;
       font-weight: normal;
       border-bottom: 1px solid #a2a9b1;
       padding-bottom: 0.3rem;
       margin-bottom: 1rem;
     }
 
+    .content-section {
+      margin-bottom: 1.75rem;
+    }
+
+    .content-section h2 {
+      font-size: 1.2rem;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .content-section p {
+      margin-bottom: 0.6rem;
+      max-width: 600px;
+    }
+
+    /* Sitemap grid */
     .sitemap-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1rem 2rem;
     }
 
     .sitemap-category h3 {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: bold;
-      margin-bottom: 0.4rem;
-      color: #202122;
+      margin-bottom: 0.3rem;
     }
 
     .sitemap-category ul {
       list-style: none;
-      padding: 0;
     }
 
     .sitemap-category ul li {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       padding: 0.1rem 0;
     }
 
     .sitemap-empty {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #54595d;
       font-style: italic;
+    }
+
+    /* Right sidebar */
+    .sidebar-right {
+      padding: 1.25rem 1rem;
+      background: #f8f9fa;
+    }
+
+    .sidebar-right .sidebar-section h2 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #54595d;
+      margin-bottom: 0.4rem;
+    }
+
+    .sidebar-right .sidebar-section p {
+      font-size: 0.82rem;
+      color: #54595d;
+      line-height: 1.5;
+    }
+
+    .sidebar-right .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-right .sidebar-section ul li {
+      font-size: 0.82rem;
+      padding: 0.1rem 0;
     }
 
     /* Footer */
     .site-footer {
       border-top: 1px solid #a2a9b1;
-      padding: 1rem 0 2rem;
-      font-size: 0.85rem;
+      background: #fff;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
       color: #54595d;
+      grid-column: 1 / -1;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
-      .site-header h1 { font-size: 1.5rem; }
-      .sitemap-grid { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar-left {
+        border-right: none;
+        border-bottom: 1px solid #a2a9b1;
+        min-height: auto;
+      }
+
+      .main-content {
+        border-right: none;
+      }
+
+      .sidebar-right {
+        border-top: 1px solid #a2a9b1;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="site-wrapper">
+  <div class="top-bar">
+    <form class="search-form" role="search">
+      <input type="search" placeholder="Search Wikibagel" aria-label="Search">
+      <button type="submit">Go</button>
+    </form>
+  </div>
 
-    <header class="site-header">
-      <h1><a href="/">Wikibagel</a></h1>
-      <p class="site-tagline">A personal knowledge base — things I find interesting.</p>
-    </header>
+  <div class="page-layout">
 
-    <main class="site-content">
+    <aside class="sidebar-left">
 
-      <section class="welcome-section">
-        <h2>Welcome</h2>
+      <div class="site-identity">
+        <h1><a href="/">Wiki<br>Bagel</a></h1>
+        <p>A personal knowledge base</p>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="/">Main Page</a></li>
+          <!-- page links added here as new pages are published -->
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Categories</h2>
+        <p>None yet.</p>
+        <!-- category links added here -->
+      </div>
+
+    </aside>
+
+    <main class="main-content">
+
+      <h1 class="page-title">Welcome to Wikibagel</h1>
+
+      <div class="content-section">
         <p>
-          Wikibagel is a collection of pages on topics I've gone deep on —
-          film, screenwriting, technology, culture, and whatever else pulls
-          my attention long enough to write about. Think of it as a personal
-          wiki: reference-style, opinionated in places, and always a work in progress.
+          Wikibagel is a personal knowledge base — reference-style pages on
+          topics I've gone deep on. Film, screenwriting, technology, culture,
+          and whatever else pulls my attention long enough to write about.
         </p>
         <p>
-          Pages aim for the Wikipedia shape — neutral summary up top, then a
-          section with my own angle on why it matters.
+          Each page follows the Wikipedia shape: a neutral summary up top,
+          then a section with my own angle on why it matters.
+          Always a work in progress.
         </p>
-      </section>
+      </div>
 
-      <section class="sitemap-section">
+      <div class="content-section">
         <h2>All Pages</h2>
         <p class="sitemap-empty">No pages yet — check back soon.</p>
-        <!-- sitemap entries go here as:
+        <!-- sitemap entries:
         <div class="sitemap-grid">
           <div class="sitemap-category">
-            <h3>Category</h3>
+            <h3>Category Name</h3>
             <ul>
               <li><a href="/slug/">Page Title</a></li>
             </ul>
           </div>
         </div>
         -->
-      </section>
+      </div>
 
     </main>
 
-    <hr>
+    <aside class="sidebar-right">
+
+      <div class="sidebar-section">
+        <h2>About</h2>
+        <p>
+          Written and maintained by one person.
+          Pages are added whenever something
+          is worth writing down properly.
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="sidebar-section">
+        <h2>Recently Added</h2>
+        <ul>
+          <!-- recent page links added here -->
+          <li><em style="font-size:0.8rem; color:#54595d;">Nothing yet.</em></li>
+        </ul>
+      </div>
+
+    </aside>
 
     <footer class="site-footer">
-      <p>Wikibagel &mdash; <a href="/">wikibagel.com</a></p>
+      <p>Wikibagel / <a href="/">wikibagel.com</a></p>
     </footer>
 
   </div>
