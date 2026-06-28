@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A $20/Year Website - Wikibagel</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #202122;
+      background: #f8f9fa;
+    }
+
+    a { color: #0645ad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:visited { color: #6b4ba1; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #a2a9b1;
+      margin: 1rem 0;
+    }
+
+    /* Top bar */
+    .top-bar {
+      background: #fff;
+      border-bottom: 1px solid #a2a9b1;
+      padding: 0.4rem 1rem;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      max-width: 320px;
+    }
+
+    .search-form input {
+      font-family: inherit;
+      font-size: 0.85rem;
+      border: 1px solid #a2a9b1;
+      padding: 0.2rem 0.4rem;
+      width: 220px;
+      background: #f8f9fa;
+      color: #202122;
+    }
+
+    .search-form button {
+      font-family: inherit;
+      font-size: 0.8rem;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      color: #202122;
+    }
+
+    .search-form button:hover { background: #eaecf0; }
+
+    /* Page layout */
+    .page-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr 200px;
+      min-height: 100vh;
+      align-items: start;
+    }
+
+    /* Left sidebar */
+    .sidebar-left {
+      border-right: 1px solid #a2a9b1;
+      padding: 1.25rem 1rem;
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    .site-identity {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #a2a9b1;
+    }
+
+    .site-identity h1 {
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .site-identity h1 a { color: #202122; }
+
+    .site-identity p {
+      font-size: 0.75rem;
+      color: #54595d;
+      margin-top: 0.2rem;
+      font-style: italic;
+    }
+
+    .sidebar-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .sidebar-section h2 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #54595d;
+      margin-bottom: 0.4rem;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li {
+      font-size: 0.85rem;
+      padding: 0.1rem 0;
+    }
+
+    .sidebar-section p {
+      font-size: 0.8rem;
+      color: #54595d;
+      font-style: italic;
+    }
+
+    /* Main content */
+    .main-content {
+      padding: 1.25rem 1.5rem;
+      background: #fff;
+      border-right: 1px solid #a2a9b1;
+    }
+
+    .page-title {
+      font-size: 1.8rem;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-intro {
+      margin-bottom: 1.25rem;
+      max-width: 620px;
+    }
+
+    /* Table of contents */
+    .toc {
+      display: inline-block;
+      background: #f8f9fa;
+      border: 1px solid #a2a9b1;
+      padding: 0.75rem 1.1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+    }
+
+    .toc-title {
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+    }
+
+    .toc ol {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .toc ol li {
+      padding: 0.1rem 0;
+    }
+
+    /* Content sections */
+    .content-section {
+      margin-bottom: 1.75rem;
+      max-width: 660px;
+    }
+
+    .content-section h2 {
+      font-size: 1.25rem;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .content-section h3 {
+      font-size: 1rem;
+      font-weight: bold;
+      margin: 0.9rem 0 0.3rem;
+    }
+
+    .content-section p {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Service logo + description block */
+    .service-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .service-logo {
+      flex-shrink: 0;
+      width: 110px;
+    }
+
+    .service-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .service-desc p {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Cost table */
+    .cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .cost-table th,
+    .cost-table td {
+      text-align: left;
+      padding: 0.35rem 0.6rem;
+      border: 1px solid #a2a9b1;
+    }
+
+    .cost-table th {
+      background: #eaecf0;
+      font-weight: bold;
+    }
+
+    .cost-table tr:last-child td {
+      font-weight: bold;
+      background: #f8f9fa;
+    }
+
+    /* Right sidebar */
+    .sidebar-right {
+      padding: 1.25rem 1rem;
+      background: #f8f9fa;
+    }
+
+    .sidebar-right .sidebar-section h2 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #54595d;
+      margin-bottom: 0.4rem;
+    }
+
+    .sidebar-right .sidebar-section p,
+    .sidebar-right .sidebar-section li {
+      font-size: 0.82rem;
+      color: #54595d;
+      line-height: 1.5;
+    }
+
+    .sidebar-right .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-right .sidebar-section ul li {
+      padding: 0.1rem 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid #a2a9b1;
+      background: #fff;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: #54595d;
+      grid-column: 1 / -1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar-left {
+        border-right: none;
+        border-bottom: 1px solid #a2a9b1;
+        min-height: auto;
+      }
+
+      .main-content {
+        border-right: none;
+      }
+
+      .sidebar-right {
+        border-top: 1px solid #a2a9b1;
+      }
+
+      .service-block {
+        flex-direction: column;
+      }
+
+      .service-logo {
+        width: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <form class="search-form" role="search">
+      <input type="search" placeholder="Search Wikibagel" aria-label="Search">
+      <button type="submit">Go</button>
+    </form>
+  </div>
+
+  <div class="page-layout">
+
+    <aside class="sidebar-left">
+
+      <div class="site-identity">
+        <h1><a href="/">Wiki<br>Bagel</a></h1>
+        <p>A personal knowledge base</p>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="/">Main Page</a></li>
+          <li><a href="/twenty-dollar-website/">$20/Year Website</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Categories</h2>
+        <ul>
+          <li><a href="#">Web</a></li>
+          <li><a href="#">Tools</a></li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <main class="main-content">
+
+      <h1 class="page-title">A $20/Year Website</h1>
+
+      <p class="page-intro">
+        Running a website doesn't require a hosting subscription. With a domain
+        purchase and a handful of free services, a fully functional site with a
+        custom domain and professional email address can run for around $10 to $20
+        a year.
+      </p>
+
+      <nav class="toc" aria-label="Contents">
+        <div class="toc-title">Contents</div>
+        <ol>
+          <li><a href="#domain">The Domain</a></li>
+          <li><a href="#hosting">Hosting</a></li>
+          <li><a href="#selling">Selling Products</a></li>
+          <li><a href="#email">Business Email</a></li>
+          <li><a href="#cost">What it Costs</a></li>
+        </ol>
+      </nav>
+
+      <section class="content-section" id="domain">
+        <h2>1. The Domain</h2>
+        <p>
+          The domain is almost always the only real expense. Two registrars worth
+          considering:
+        </p>
+
+        <h3>Namecheap</h3>
+        <p>
+          A straightforward registrar with competitive pricing on common TLDs.
+          <code>.com</code> domains typically run $10 to $14 a year. Includes free
+          WHOIS privacy protection, which most registrars charge extra for.
+        </p>
+
+        <h3>Cloudflare Registrar</h3>
+        <p>
+          Sells domains at wholesale cost with no markup, making it one of the
+          cheapest options available for most TLDs. Requires a free Cloudflare
+          account. DNS is managed through Cloudflare's dashboard, which integrates
+          cleanly if you're already using Cloudflare for hosting or CDN.
+        </p>
+      </section>
+
+      <section class="content-section" id="hosting">
+        <h2>2. Hosting</h2>
+
+        <h3>GitHub Pages</h3>
+        <p>
+          Free static site hosting from GitHub. Supports custom domains: point
+          your domain's DNS to GitHub's servers, add a <code>CNAME</code> file
+          to the repository root containing your domain name, and enable the
+          custom domain in the repository's Pages settings. HTTPS is provisioned
+          automatically. Works for any site built from static HTML, CSS, and
+          JavaScript, with no server-side logic required.
+        </p>
+
+        <h3>Cloudflare Pages</h3>
+        <p>
+          A free alternative with a similar scope. Connects directly to a GitHub
+          or GitLab repository and deploys automatically on every push. Supports
+          custom domains and includes HTTPS. Slightly faster global delivery than
+          GitHub Pages in most regions due to Cloudflare's CDN network.
+        </p>
+      </section>
+
+      <section class="content-section" id="selling">
+        <h2>3. Selling Products</h2>
+
+        <div class="service-block">
+          <div class="service-logo">
+            <img src="images/payhip.png" alt="Payhip">
+          </div>
+          <div class="service-desc">
+            <p>
+              Payhip is a platform for selling digital products: ebooks, PDFs,
+              software, courses, and memberships. The free plan has no monthly fee.
+              Instead, Payhip takes a 5% cut per transaction. That percentage drops
+              if you upgrade to a paid plan, but for low-volume sellers the free
+              tier is a reasonable starting point.
+            </p>
+            <p>
+              Products can be embedded directly into an existing site or sold
+              through a Payhip-hosted storefront. Either way, no monthly commitment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="email">
+        <h2>4. Business Email</h2>
+
+        <div class="service-block">
+          <div class="service-logo">
+            <img src="images/zoho-mail.png" alt="Zoho Mail">
+          </div>
+          <div class="service-desc">
+            <p>
+              Zoho Mail offers a free plan for a single user with a custom domain.
+              Setup involves adding a few DNS records to verify domain ownership
+              and route email through Zoho's servers. The result is a professional
+              address at your own domain with no monthly cost.
+            </p>
+            <p>
+              The free tier covers one user, 5GB of storage, and webmail access.
+              It doesn't include IMAP or POP access on the free plan, so email
+              is managed through Zoho's web interface or their mobile app.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="cost">
+        <h2>5. What it Costs</h2>
+
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Domain (.com via Cloudflare Registrar)</td>
+              <td>~$10/yr</td>
+            </tr>
+            <tr>
+              <td>Hosting (GitHub Pages or Cloudflare Pages)</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td>Digital product sales (Payhip free plan)</td>
+              <td>5% per sale</td>
+            </tr>
+            <tr>
+              <td>Business email (Zoho Mail, 1 user)</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>~$10/yr</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+    <aside class="sidebar-right">
+
+      <div class="sidebar-section">
+        <h2>Page Info</h2>
+        <p>Published: June 2026</p>
+      </div>
+
+      <hr>
+
+      <div class="sidebar-section">
+        <h2>Categories</h2>
+        <ul>
+          <li><a href="#">Web</a></li>
+          <li><a href="#">Tools</a></li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="sidebar-section">
+        <h2>Related Pages</h2>
+        <p style="font-style: italic;">Nothing yet.</p>
+      </div>
+
+    </aside>
+
+    <footer class="site-footer">
+      <p>Wikibagel / <a href="/">wikibagel.com</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
