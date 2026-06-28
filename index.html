@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikibagel — A Personal Knowledge Base</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #202122;
+      background: #f8f9fa;
+    }
+
+    a { color: #0645ad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:visited { color: #6b4ba1; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #a2a9b1;
+      margin: 1.5rem 0;
+    }
+
+    /* Layout */
+    .site-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header */
+    .site-header {
+      border-bottom: 1px solid #a2a9b1;
+      padding: 1.25rem 0 1rem;
+    }
+
+    .site-header h1 {
+      font-size: 2rem;
+      font-weight: normal;
+      letter-spacing: -0.5px;
+    }
+
+    .site-header h1 a {
+      color: #202122;
+      text-decoration: none;
+    }
+
+    .site-tagline {
+      font-size: 0.9rem;
+      color: #54595d;
+      margin-top: 0.2rem;
+      font-style: italic;
+    }
+
+    /* Main content */
+    .site-content {
+      padding: 1.5rem 0;
+    }
+
+    .welcome-section h2 {
+      font-size: 1.4rem;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .welcome-section p {
+      margin-bottom: 0.75rem;
+      max-width: 680px;
+    }
+
+    /* Sitemap */
+    .sitemap-section {
+      margin-top: 2rem;
+    }
+
+    .sitemap-section h2 {
+      font-size: 1.4rem;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .sitemap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem 2rem;
+    }
+
+    .sitemap-category h3 {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+      color: #202122;
+    }
+
+    .sitemap-category ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sitemap-category ul li {
+      font-size: 0.95rem;
+      padding: 0.1rem 0;
+    }
+
+    .sitemap-empty {
+      font-size: 0.95rem;
+      color: #54595d;
+      font-style: italic;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid #a2a9b1;
+      padding: 1rem 0 2rem;
+      font-size: 0.85rem;
+      color: #54595d;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .site-header h1 { font-size: 1.5rem; }
+      .sitemap-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-wrapper">
+
+    <header class="site-header">
+      <h1><a href="/">Wikibagel</a></h1>
+      <p class="site-tagline">A personal knowledge base — things I find interesting.</p>
+    </header>
+
+    <main class="site-content">
+
+      <section class="welcome-section">
+        <h2>Welcome</h2>
+        <p>
+          Wikibagel is a collection of pages on topics I've gone deep on —
+          film, screenwriting, technology, culture, and whatever else pulls
+          my attention long enough to write about. Think of it as a personal
+          wiki: reference-style, opinionated in places, and always a work in progress.
+        </p>
+        <p>
+          Pages aim for the Wikipedia shape — neutral summary up top, then a
+          section with my own angle on why it matters.
+        </p>
+      </section>
+
+      <section class="sitemap-section">
+        <h2>All Pages</h2>
+        <p class="sitemap-empty">No pages yet — check back soon.</p>
+        <!-- sitemap entries go here as:
+        <div class="sitemap-grid">
+          <div class="sitemap-category">
+            <h3>Category</h3>
+            <ul>
+              <li><a href="/slug/">Page Title</a></li>
+            </ul>
+          </div>
+        </div>
+        -->
+      </section>
+
+    </main>
+
+    <hr>
+
+    <footer class="site-footer">
+      <p>Wikibagel &mdash; <a href="/">wikibagel.com</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
